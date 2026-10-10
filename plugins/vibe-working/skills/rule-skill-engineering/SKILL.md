@@ -1,5 +1,5 @@
 ---
-name: rule-skill-authoring
+name: rule-skill-engineering
 description: 将文档、经验与案例反馈加工为 agent 规则，开发或完善 skill，并检查规则是否进入执行者的决定、是否体现在产物中；也用于规则归并、语义案例设计，以及承载实现决策的开发指南、架构说明与协议。只审阅既有 skill 时由 skill-audit 主持；纯文案、事实记录与机械编辑不触发。
 ---
 

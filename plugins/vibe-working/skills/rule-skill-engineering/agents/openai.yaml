@@ -1,4 +1,4 @@
 interface:
   display_name: "知识到规则与 Skill 工程"
   short_description: "将来源材料整理为可执行的 skill、开发指南、架构说明与协议，并检查规则是否进入执行者的决定"
-  default_prompt: "使用 $rule-skill-authoring 将这些材料整理为任务所需的 skill 或开发规则文档。"
+  default_prompt: "使用 $rule-skill-engineering 将这些材料整理为任务所需的 skill 或开发规则文档。"

@@ -1,12 +1,12 @@
 {
-  "release": "1.0.0",
+  "release": "1.0.1",
   "packaged_on": "2026-10-10",
   "visibility": "public",
   "skills": [
     {
-      "name": "rule-skill-authoring",
+      "name": "rule-skill-engineering",
       "source_name": "rule-skill-engineering",
-      "entry": "plugins/vibe-working/skills/rule-skill-authoring/SKILL.md"
+      "entry": "plugins/vibe-working/skills/rule-skill-engineering/SKILL.md"
     },
     {
       "name": "engineering-value",
@@ -25,7 +25,6 @@
     }
   ],
   "adaptations": [
-    "Portable local references and historical-source locators",
-    "rule-skill-engineering published as rule-skill-authoring"
+    "Portable local references and historical-source locators"
   ]
 }

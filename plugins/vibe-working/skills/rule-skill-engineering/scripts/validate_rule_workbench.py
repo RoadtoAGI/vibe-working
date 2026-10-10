@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate a rule-skill-authoring workbench JSON file."""
+"""Validate a rule-skill-engineering workbench JSON file."""
 
 from __future__ import annotations
 
