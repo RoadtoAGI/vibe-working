@@ -1,0 +1,20 @@
+{
+  "name": "vibe-working",
+  "interface": {
+    "displayName": "Vibe Working"
+  },
+  "plugins": [
+    {
+      "name": "vibe-working",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vibe-working"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

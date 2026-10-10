@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "language": "zh-CN",
+  "purpose": "Chinese surface-pattern candidates for non-creative writing. Matches locate text to reread; they are not findings, edit instructions, or authorship evidence. Semantic judgment follows references/semantic-families.md and zh-wording.md.",
+  "families": {
+    "performative_preface": {
+      "description": "回答属性标签的表层候选；结合上下文确认是否缺少内容功能。",
+      "rules": [
+        {"id": "honesty_preface", "pattern": "(?:^|[。！？!?])\\s*(?:#{1,6}\\s*|[-*+]\\s*)?(?:诚实(?:地)?说|说实话|老实说|坦率(?:地)?说|坦白(?:地)?说|实话实说)(?=\\s*[,，:：])", "severity": "high", "message": "核对是否只是诚实性自我标注；确认无内容功能后删除，引文按实际用途保留。"},
+        {"id": "brevity_preface", "pattern": "(?:^|[。！？!?])\\s*(?:#{1,6}\\s*|[-*+]\\s*)?(?:短答|简短回答|简洁版|一句话回答|一句话版本)(?=\\s*[,，:：。！？!?]|\\s*$)", "severity": "high", "message": "核对是否只是篇幅自我标注；确认无导航功能后删除，保留理解所需内容。"},
+        {"id": "conclusion_first_preface", "pattern": "(?:^|[。！？!?])\\s*(?:#{1,6}\\s*|[-*+]\\s*)?(?:先给结论|先说结论|结论先行|先给答案|先说答案|直接给答案|直接说结论)(?=\\s*[,，:：。！？!?]|\\s*$)", "severity": "high", "message": "核对是否只是顺序表演；确认无导航功能后从结论开始。"},
+        {"id": "plain_speech_preface", "pattern": "(?:^|[。！？!?])\\s*(?:#{1,6}\\s*|[-*+]\\s*)?(?:讲人话|说人话|直白(?:地)?说|通俗(?:地)?说|简单(?:地)?说|简单来说|开门见山(?:地)?说|不绕弯子)(?=\\s*[,，:：。！？!?]|\\s*$)", "severity": "high", "message": "核对是否只是语言属性标签；有效的通俗重述和解释承接保留，无功能标签删除。"}
+      ]
+    },
+    "meta_performance": {
+      "description": "句子先表演提醒、强调或显然性，再进入实际命题。",
+      "rules": [
+        {"id": "meta_notice", "pattern": "(?:值得注意的是|需要指出的是|需要强调的是|尤其值得注意的是|值得一提的是|必须看到的是)", "severity": "medium", "message": "检查提醒是否承担强调区别或承接的作用；删除无用框架后重组必要关系。"},
+        {"id": "meta_obvious", "pattern": "(?:不难发现|不难看出|显而易见(?:的是)?|毋庸置疑(?:的是)?|众所周知(?:的是)?|可以清楚地看出)", "severity": "medium", "message": "直接呈现已有命题及其推理关系，删除无信息作用的显然性宣告，保留判断力度。"},
+        {"id": "assistant_leak", "pattern": "(?:作为(?:一个)?AI|根据你的要求|下面我将|希望以上内容|如果你需要(?:的话)?|本文将从以下(?:几个)?方面|(?:我)?(?:调用|执行|启用)(?:了)?你(?:所)?要求的)", "severity": "high", "message": "核对是否为成稿中的助手执行话语；正文导航、引文和用户要求的操作说明按实际功能判断。"},
+        {"id": "announced_decisiveness", "pattern": "(?:关键矛盾|关键问题|核心矛盾|结论)(?:已经|很|十分)?明确(?:是|：|:)", "severity": "medium", "message": "检查是否重复宣告明确性；已有的矛盾、问题或结论及其承接作用保留。"}
+      ]
+    },
+    "filler_connector": {
+      "description": "连接词或限定语反复占据句首，却没有增加逻辑关系。",
+      "rules": [
+        {"id": "generic_connector", "pattern": "(?:事实上|实际上|具体而言|换言之|由此可见|综上所述|综合来看|总的来说|总体而言|一般而言|相对而言)", "severity": "low", "min_document_hits": 2, "message": "核对连接词是否标记了真实的逻辑变化。"},
+        {"id": "vague_qualification", "pattern": "(?:在一定程度上|从某种意义上说|在某种程度上|某种程度上|可以说|不失为|或多或少)", "severity": "low", "min_document_hits": 2, "message": "检查限定是否承担条件、范围或语气功能；保留已有必要限定及作者结论力度。"}
+      ]
+    },
+    "contrastive_negation": {
+      "description": "否定一个无人主张的选项，再以转折结构宣布结论；真实让步、精确逻辑区分与程序性两分同形。",
+      "rules": [
+        {"id": "not_but", "pattern": "(?:并非|不是|绝非|不只是|不仅仅是)[^。！？\\n]{0,80}(?:而是|更是|而在于)", "severity": "medium", "message": "检查是否只是迂回宣告；需要修订时直接陈述已有命题，并保留比较对象和成立条件。"},
+        {"id": "surface_actual", "pattern": "(?:表面上|看似)[^。！？\\n]{0,80}(?:实际上|实则|本质上)", "severity": "medium", "message": "检查前后是否表达了具体差异，保留原有比较对象与结论。"},
+        {"id": "rather_than", "pattern": "与其[^。！？\\n]{0,80}不如", "severity": "low", "message": "检查比较双方和选择标准是否表达清楚，保留作者已有判断。"},
+        {"id": "focus_not_but", "pattern": "(?:重点|关键|问题|核心|真正的问题|真正的差别|真正值得[^。！？\\n]{0,6})(?:不在于|不是|不在)[^。！？\\n]{0,40}(?:而在于|而是|而在)", "severity": "medium", "message": "问：被否定的一半有人主张吗？删掉它，后半句的依据或范围是否受损？不受损就直接陈述结论；不要倒装成“Y 而非 X”充数。"},
+        {"id": "genuine_claim", "pattern": "真正(?:的)?(?:[\\u4e00-\\u9fff]{1,6})(?:是|在于)(?=[^。！？\\n]{2,})", "severity": "low", "min_document_hits": 2, "message": "“真正的 X 是……”宣告揭示本质；核对它是否只是重述已有结论，直接写判断及条件。"}
+      ]
+    },
+    "strawman_opening": {
+      "description": "引出一个随后被推翻的看法却不说是谁的，或回应文中没人提出的反对。真实文献、前文选项与用户确认的常见误解同形。",
+      "rules": [
+        {"id": "anonymous_opponent", "pattern": "(?:有人认为|有观点认为|很多人以为|许多人认为|不少人认为|人们往往(?:认为|以为)|人们常常(?:认为|以为)|传统观点认为|一般认为|常见的误解是|一个常见的误区是|某些人(?:想象|以为)|有些人(?:想象|以为))", "severity": "low", "review_only": true, "message": "问：这个对手是谁？文献、前文或可核对的常见用法算真实对手，写明归属再反驳；找不到就删去引子，直接写判断。"},
+        {"id": "preemptive_denial", "pattern": "(?:不要误会|这并不是说|我并不是说|并不是要|需要澄清的是|这里要澄清|先说明一点)", "severity": "low", "review_only": true, "message": "核对文中是否真有人提出这个反对；没有就删去，保留随后的事实或条件。"},
+        {"id": "surface_intuition_lead", "pattern": "(?:^|[。！？!?\\n])\\s*(?:直觉上|乍看之下|初看|表面上看|从直觉上看)[，,]", "severity": "low", "review_only": true, "message": "引出的直觉是本段要检验的对象，还是只为衬托结论？是对象则保留并说明来源；是衬托则直接写差异。"}
+      ]
+    },
+    "formulaic_enumeration": {
+      "description": "固定序数和对称枚举替代真实逻辑层级。",
+      "rules": [
+        {"id": "ordinal_transition", "pattern": "(?:首先|其次|再次|最后|第一|第二|第三)[，,:：]", "severity": "low", "min_document_hits": 3, "message": "检查条目数量是否来自真实论点，而非固定模板。"},
+        {"id": "paired_transition", "pattern": "一方面[^。！？\\n]{0,120}另一方面", "severity": "low", "min_document_hits": 2, "message": "检查两分结构是否覆盖真实维度。"}
+      ]
+    },
+    "hollow_coordination": {
+      "description": "用“与、和、及、、”并排项目而不交代关系或判断；并列项各有内容、业界固定搭配与导航标题同形。",
+      "rules": [
+        {"id": "abstract_pair", "pattern": "(?:效率|质量|深度|广度|理论|实践|能力|水平|机遇|挑战|稳定性|可靠性|可用性|一致性|完整性|准确性|灵活性|可维护性|可扩展性|性能|成本|安全性|体验|速度|精度|效果|价值|意义|规模|方法|思路|策略|手段|机制|体系|路径|范围)(?:与|和|及)(?:效率|质量|深度|广度|理论|实践|能力|水平|机遇|挑战|稳定性|可靠性|可用性|一致性|完整性|准确性|灵活性|可维护性|可扩展性|性能|成本|安全性|体验|速度|精度|效果|价值|意义|规模|方法|思路|策略|手段|机制|体系|路径|范围)(?![\\u4e00-\\u9fff])", "severity": "low", "review_only": true, "message": "抽象两面并列：问删掉一项意思变不变，本处对象是什么。补对象或写出关系；只换连词不算修复。"},
+        {"id": "coordinated_heading", "pattern": "^\\s*#{1,6}\\s+(?:(?:[一二三四五六七八九十百]+、|\\d+(?:\\.\\d+)*[.、]?|[A-Z]{2,6}-\\d+|\\d+｜)\\s*|(?!(?:[一二三四五六七八九十百]+、|\\d+(?:\\.\\d+)*[.、]?|[A-Z]{2,6}-\\d+|\\d+｜)))(?:[^：:\\n]*[：:]\\s*)?(?![^\\n]*(?:是|不|能|会|要|把|让|决定|靠|先|再|只|才|怎样|怎么|什么|为什么|哪|吗|何时|谁|可以|没有|就|则|按|从|用|由|每|写明|如何|，|,))[^\\n]*?[\\u4e00-\\u9fffA-Za-z0-9]+(?:与|、|和|及)[\\u4e00-\\u9fffA-Za-z0-9 ]+[^\\n]*$", "severity": "low", "review_only": true, "message": "标题只摆项目还是说出了判断？结合正文首尾段判断：正文已建立关系或结论的，标题写出来；并列项即内容、固定搭配、纯导航保留。"},
+        {"id": "range_template_heading", "pattern": "^\\s*#{1,6}\\s+[^\\n]*[：:]\\s*(?:从[^\\n]{1,14}到[^\\n]{1,14}|按[^\\n]{1,10}(?:做|看|分|选)[^\\n]{0,10})\\s*$", "severity": "low", "review_only": true, "message": "“X：从 A 到 B / 按 Y 做 Z”在同一篇里成片出现时是套式；A、B 有具体对象的单处标题不是问题。", "min_document_hits": 3}
+      ]
+    },
+    "stock_judgment": {
+      "description": "库存评价短语代替具体影响、指标或机制。",
+      "rules": [
+        {"id": "importance_claim", "pattern": "(?:具有(?:十分|非常|极其)?重要意义|发挥(?:着)?重要作用|产生(?:了)?深远影响|具有广阔(?:的)?前景)", "severity": "low", "message": "检查评价是否已有具体含义；需要展开时从材料补明影响对象、关系或结果。"},
+        {"id": "support_claim", "pattern": "(?:提供(?:了)?有力支撑|奠定(?:了)?坚实基础|迈出(?:了)?坚实步伐|取得(?:了)?显著成效)", "severity": "low", "message": "检查所指支撑及结果是否可由上下文辨明；缺失时从已有材料补足。"},
+        {"id": "opportunity_challenge", "pattern": "(?:带来|面临)(?:了)?(?:新的|前所未有的)?机遇(?:和|与)挑战", "severity": "low", "message": "检查机会与约束是否已有具体内容；需要展开时沿用已有材料。"},
+        {"id": "generic_contribution", "pattern": "(?:提供|开辟)(?:了)?(?:新的|全新的)?(?:思路|路径|视角|方向)", "severity": "low", "message": "检查新增对象、方法差异和场景是否清楚，保留已定义的指代。"}
+      ]
+    },
+    "empty_modifier": {
+      "description": "评价性形容词或副词断言品质却没有标准；术语（有效括号、清晰度）与紧跟兑现清单的评价同形。",
+      "rules": [
+        {"id": "empty_evaluative_adjective", "pattern": "(?:(?:清晰|清楚|明确|有效|高效|全面|深入|合理|显著|良好|强大|丰富|灵活|扎实|精准|稳健|完善)(?:的|地)|系统地|科学地)(?=[\\u4e00-\\u9fff])", "severity": "low", "review_only": true, "min_document_hits": 3, "message": "问：相对什么？不这样会是什么样？邻句能答则有所指；答不出就写出具体属性或删去，不换成另一个评价词。"},
+        {"id": "quality_adjective_series", "pattern": "(?:清晰|清楚|明确|有效|高效|全面|深入|合理|显著|良好|强大|丰富|灵活|扎实|精准|稳健|完善|可控|方便|系统)[、，,](?:[\\u4e00-\\u9fff]{1,4}[、，,]){0,3}[\\u4e00-\\u9fff]{0,4}(?:清晰|清楚|明确|有效|高效|全面|深入|合理|显著|良好|强大|丰富|灵活|扎实|精准|稳健|完善|可控|方便|系统)(?=[。；，,、！？\\n]|$)", "severity": "low", "review_only": true, "message": "评价词并列，没有对象：有材料就写目标是什么、成本多少；没有就删。"},
+        {"id": "universal_referent", "pattern": "这件事", "severity": "low", "review_only": true, "min_document_hits": 3, "message": "“这件事”作万能指代：换成具体所指（这笔账、这个结果、这套级联），或直接删，让引号短语当主语。"}
+      ]
+    },
+    "stock_metaphor": {
+      "description": "高频比喻或商业隐喻可能遮蔽实际机制。",
+      "rules": [
+        {"id": "inject_momentum", "pattern": "注入(?:新的|新|强劲)?(?:动能|活力|动力)", "severity": "low", "message": "检查比喻能否准确指向资源和作用关系；失配时按已有材料直述。"},
+        {"id": "engine_metaphor", "pattern": "(?:增长|创新|发展|转型)(?:的)?(?:新)?引擎", "severity": "low", "message": "检查引擎隐喻能否对应实际驱动机制。"},
+        {"id": "bridge_metaphor", "pattern": "(?:搭建|架起|构筑)[^。！？\\n]{0,20}(?:桥梁|纽带)", "severity": "low", "message": "检查连接双方及关系是否清楚；失配时从材料补明，正常比喻可保留。"},
+        {"id": "door_chapter_metaphor", "pattern": "(?:打开|开启)[^。！？\\n]{0,20}(?:大门|新篇章|新局面)", "severity": "low", "message": "检查开启类表达是否指向具体变化；仅为空泛收束时按已有内容修订。"},
+        {"id": "blueprint_metaphor", "pattern": "(?:绘制|擘画|勾勒)[^。！？\\n]{0,20}(?:蓝图|图景)", "severity": "low", "message": "检查规划对象和内容是否清楚；失配时按材料展开，已有定义可保留。"},
+        {"id": "foundation_metaphor", "pattern": "(?:筑牢|夯实|打牢)[^。！？\\n]{0,20}(?:基石|根基|基础)", "severity": "low", "message": "检查基础所指的条件或组成是否清楚；需要补明时使用已有材料。"},
+        {"id": "business_metaphor_token", "pattern": "(?:赋能|抓手|闭环|护城河|赛道|破局)", "severity": "low", "min_document_hits": 2, "message": "核对比喻的实际作用；失配时恢复具体对象和关系，准确表达保持。"}
+      ]
+    },
+    "code_document_register_leakage": {
+      "description": "日常、医学、学术、商业等非代码文本呈现代码设计文档、验证报告或 agent 执行记录的闸门、审计、状态分类、分支、fallback 和版本管理文风。",
+      "rules": [
+        {"id": "pseudo_control_label", "pattern": "(?:(?:准确性|证据|事实|安全|质量|风险)(?:硬刹车|硬闸门|硬门禁)|停止条件|硬刹车|硬闸门|硬门禁|强制门禁|质量闸门)", "severity": "low", "review_only": true, "message": "检查是否存在字面控制机制或正式条件；确认语域失配后按本领域对象和条件修订。"},
+        {"id": "pseudo_audit_label", "pattern": "(?:盲区|证据|事实|风险|准确性|完整性)(?:审计|扫描|盘点)", "severity": "low", "review_only": true, "message": "核对是否为正式核查或自设名目；确认失配后表达已有核查对象和遗漏。"},
+        {"id": "verification_bucket", "pattern": "(?:已验证|未验证)(?:能力|判断|结论|事实|证据|信息)", "severity": "low", "review_only": true, "message": "检查分类标签是否制造程序感；可直接写已知事实、未知判断及其差异。"},
+        {"id": "status_usage_scope_heading", "pattern": "(?:已知|当前|现有)(?:状态|情况)(?:与|和)(?:使用|应用|适用)(?:边界|范围|限制)", "severity": "low", "review_only": true, "message": "非代码文本中的标题候选：检查是否把事实、现状或注意事项包装成系统状态与接口使用范围。"},
+        {"id": "branch_foreclosure", "pattern": "(?:(?:只|仅)保留(?:以下)?(?:一|二|两|三|[0-9]+)个?(?:选择|方案|路径)|没有第(?:三|四|五|[0-9]+)条(?:选择|方案|路径)|不再(?:为|提供|讨论)[^。！？\\n]{0,20}(?:方案|路线|路径))", "severity": "medium", "review_only": true, "message": "检查模型是否自行封闭选项；改写为当前可行方案及各自成立条件。"},
+        {"id": "evidence_gate", "pattern": "(?:除非|只有)[^。！？\\n]{0,40}(?:真正的)?新证据", "severity": "low", "review_only": true, "message": "检查新信息及重新评估条件是否清楚；保留已有严格条件，修复空泛程序名目。"},
+        {"id": "fallback_register", "pattern": "(?:没有|缺少|提供|保留|设置|建立)[^。！？\\n]{0,24}(?:兜底|(?i:fallback)|降级路径|回退路径)", "severity": "low", "review_only": true, "message": "核对是否为字面备用机制；确认语域失配后从材料写明备用资源和安排。"},
+        {"id": "agent_governance_term", "pattern": "(?i:(?:状态机|SSOT|单一事实源|唯一事实源|fail[- ]closed|fail[- ]fast|验收契约|交付契约|输出契约|审计轨迹|可追溯性矩阵|traceability matrix))", "severity": "low", "review_only": true, "message": "检查术语是否属于目标领域的字面机制；否则用具体阶段、依据、要求或记录替代。"},
+        {"id": "engineering_quality_hype", "pattern": "(?i:(?:生产就绪|生产级|企业级|久经考验|面向未来|production[- ]ready|production[- ]grade|battle[- ]tested|future[- ]proof|enterprise[- ]grade))", "severity": "low", "review_only": true, "message": "核对是否为字面属性；空泛质量标签按已有属性、结果和范围修订。"},
+        {"id": "route_version", "pattern": "(?:路线版|审计版|执行版)", "severity": "low", "review_only": true, "message": "检查模型是否把普通建议包装成交付版本；直接给出适用方案。"},
+        {"id": "fatal_blindspot", "pattern": "(?:最致命|致命)(?:的)?盲区", "severity": "medium", "review_only": true, "message": "检查是否以戏剧化标签替代了具体风险；需要修订时保留原有风险条件和后果。"},
+        {"id": "engineering_measurement_register", "pattern": "(?:在量级上|同量级(?:的)?(?:任务|距离|风险))", "severity": "low", "review_only": true, "message": "检查量级是否承担真实比较；必要比较保留，语域失配时按已有数值或范围修订。"},
+        {"id": "audit_voice", "pattern": "(?:需要|应|须|另行|分别|仍需|有待)(?:显式|单独|重新)?(?:核对|核实)|(?:另行|分别|有待)(?:确认|检查|验证)", "severity": "low", "review_only": true, "min_document_hits": 2, "message": "讲义或说明里的审计腔：写出谁决定、所以要做什么，而不是“需要核对”这样的执行报告口吻；真实的检查步骤保留。"}
+      ]
+    },
+    "stiff_register": {
+      "description": "半公文、半文言的否定词与轻动词成片出现；单个合法，术语与正式文体同形。按段落密度判断。",
+      "rules": [
+        {"id": "literary_negation", "pattern": "(?:尚未|未能|并未|未被|未经|仍未|均未|亦未)", "severity": "low", "review_only": true, "min_document_hits": 3, "message": "读出来像本领域的人在说话吗？换成“还没、没能、没有”是否更顺且不失精度；术语（未定义行为、尚未提交的事务）与正式文体保留。"},
+        {"id": "literary_particle", "pattern": "(?:(?<!比)皆(?!大欢喜)|亦(?=[\\u4e00-\\u9fff])|(?<=[，,；;])(?:乃|均)(?=[\\u4e00-\\u9fff])|乃(?!至))", "severity": "low", "review_only": true, "min_document_hits": 3, "message": "文言副词成片：讲义、说明和随笔里换成“也、都、是”；引文与正式条文保留。"},
+        {"id": "light_verb", "pattern": "(?:予以|加以|得以|有所|作出|进行(?:了)?(?=(?:[\\u4e00-\\u9fff]{2,4})(?:[，。；、]|$)))", "severity": "low", "review_only": true, "min_document_hits": 3, "message": "轻动词+名词化：还原成直接动词（检查、测试、改进）；公文固定搭配（予以受理、进行公示）与已是术语的名词保留。"},
+        {"id": "detour_verb", "pattern": "(?:作为[^。！？\\n]{1,12}(?:的)?(?:存在|角色|手段|载体|工具|桥梁)|充当[^。！？\\n]{1,10}(?:角色|作用)|扮演(?:着)?[^。！？\\n]{1,10}角色|被视为[^。！？\\n]{1,12}(?:的)?(?:关键|核心|重要))", "severity": "low", "review_only": true, "message": "绕开“是、有”的动词：直接写它是什么、有什么；真实的角色或职能表述保留。"},
+        {"id": "purpose_frame", "pattern": "(?:旨在|围绕[^。！？\\n]{1,10}(?:展开|进行|开展)|聚焦(?:于)?[^。！？\\n]{1,10}(?:展开|进行)|通过[^。！？\\n]{2,20}来(?:实现|提升|改善|增强|确保|保障))", "severity": "low", "review_only": true, "min_document_hits": 2, "message": "“旨在 / 围绕……展开 / 通过……来实现”框架：直接写做了什么、为了什么；术语与接口名保留。"}
+      ]
+    },
+    "vague_authority": {
+      "description": "使用模糊权威来源支撑判断。",
+      "rules": [
+        {"id": "unsourced_research", "pattern": "(?:大量|相关|已有|多项)?研究(?:结果)?表明", "severity": "medium", "requires_anchor": true, "message": "从已有材料补明所指研究；无法定位时保留原文，必要时在审阅说明中指出所缺信息。"},
+        {"id": "unsourced_data", "pattern": "(?:相关)?数据(?:清楚)?显示", "severity": "medium", "requires_anchor": true, "message": "从已有材料补明所指数据及理解它所需的口径；无法定位时保留原文，必要时在审阅说明中指出所缺信息。"},
+        {"id": "unsourced_consensus", "pattern": "(?:业内|业界|学界|市场)(?:普遍|一般)?认为", "severity": "medium", "requires_anchor": true, "message": "从已有材料明确所指主体；无法定位时保留原文，必要时在审阅说明中指出所缺信息。"},
+        {"id": "unsourced_expert", "pattern": "(?:有观点认为|专家指出|实践证明)", "severity": "medium", "requires_anchor": true, "message": "从已有材料明确观点或实践的来源；无法定位时保留原文，必要时在审阅说明中指出所缺信息。"}
+      ]
+    },
+    "generic_conclusion": {
+      "description": "用结论标记替代局部推理。",
+      "rules": [
+        {"id": "this_shows", "pattern": "(?:这|这一结果|上述结果)(?:充分|清楚|有力)?(?:表明|说明|证明)", "severity": "low", "min_document_hits": 2, "message": "把结果与本段要表达的意思连接起来，保留原有结论力度；此提示用于定位重复句式。"},
+        {"id": "fundamental_claim", "pattern": "(?:从根本上|本质上|归根到底|说到底)", "severity": "low", "min_document_hits": 2, "message": "检查根本性判断的对象和变化是否表达清楚，定位重复句式并保留作者结论力度。"}
+      ]
+    }
+  },
+  "derived_signals": {
+      "modal_tokens": [
+          "可能",
+          "或许",
+          "也许",
+          "似乎",
+          "大概",
+          "一定程度上",
+          "某种程度上",
+          "倾向于"
+      ],
+      "modal_stack_min": 2,
+      "intensifier_tokens": [
+          "非常",
+          "极其",
+          "显著",
+          "充分",
+          "全面",
+          "深刻",
+          "持续",
+          "不断",
+          "有力",
+          "切实"
+      ],
+      "intensifier_stack_min": 3,
+      "repeated_paragraph_prefix_chars": 6,
+      "repeated_paragraph_prefix_min": 3
+  }
+}

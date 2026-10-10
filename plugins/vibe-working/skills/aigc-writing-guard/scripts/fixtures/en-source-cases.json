@@ -1,0 +1,261 @@
+{
+  "purpose": "Sourced development regression; semantic expectations are documented judgments, not automatic findings or held-out efficacy evidence.",
+  "cases": [
+    {
+      "id": "muse_abstract_relation",
+      "text": "LLMs have been able to generate fluent prose, but creating a high-quality story also requires coordinated decisions about plot, character, and language across planning, drafting, and revision.",
+      "source": {
+        "path": "MUSE/paper/content/main-text/main-en.md",
+        "locator": "L7",
+        "sha256": "fcf66e37714dee8c2257b809e846760756f5f0abd1f7714e7569ef9fd0f5daf8"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "non_trigger: necessary concessive relation, existing author-confirmed reading repair"
+    },
+    {
+      "id": "muse_artifact_definition",
+      "text": "An *artifact* is an intermediate file in this trace, such as a world description, Phase 2 character profile, scene plan, or review verdict.",
+      "source": {
+        "path": "MUSE/paper/content/main-text/main-en.md",
+        "locator": "L61",
+        "sha256": "fcf66e37714dee8c2257b809e846760756f5f0abd1f7714e7569ef9fd0f5daf8"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "non_trigger: concrete definition and examples"
+    },
+    {
+      "id": "muse_formula_colon",
+      "text": "The scene plans in this trace use a *beat contract* to specify the intended value transition and the pressure that drives it:",
+      "source": {
+        "path": "MUSE/paper/content/main-text/main-en.md",
+        "locator": "L63",
+        "sha256": "fcf66e37714dee8c2257b809e846760756f5f0abd1f7714e7569ef9fd0f5daf8"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "non_trigger: colon introduces the immediately following formula"
+    },
+    {
+      "id": "muse_definition_colon",
+      "text": "A run is acceptable when its trace and story jointly satisfy four requirements:",
+      "source": {
+        "path": "MUSE/paper/content/main-text/main-en.md",
+        "locator": "L76",
+        "sha256": "fcf66e37714dee8c2257b809e846760756f5f0abd1f7714e7569ef9fd0f5daf8"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "non_trigger: introduces a defined conjunction of requirements"
+    },
+    {
+      "id": "muse_contribution_opening",
+      "text": "Our contributions:",
+      "source": {
+        "path": "MUSE/paper/main-submission-by-yxc(1).pdf",
+        "locator": "PDF p.2, YXC-31",
+        "sha256": "db0fbb74ec764a4c9f74db08d8b38da08e111671d5fab3f11c640c6765bca705"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [
+        "en_contribution_colon"
+      ],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": false,
+      "semantic_expectation": "review_candidate: contribution hierarchy is a separate repair"
+    },
+    {
+      "id": "muse_abstract_interface",
+      "text": "story theory becomes the API of generation",
+      "source": {
+        "path": "MUSE/paper/main-submission-by-yxc(1).pdf",
+        "locator": "PDF p.1, YXC-26",
+        "sha256": "db0fbb74ec764a4c9f74db08d8b38da08e111671d5fab3f11c640c6765bca705"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "reading_problem: reader cannot recover intended operation; semantic context needed despite zero surface hits"
+    },
+    {
+      "id": "muse_colon_analogy",
+      "text": "Agentic code generation crossed from demonstration to daily tool when harnesses made long-running model behavior stateful, inspectable, and correctable (Yang et al. 2024): explicit contracts state what each step must satisfy, persistent state records what the run has committed to, and verification decides when to retry.",
+      "source": {
+        "path": "MUSE/paper/main-submission-by-yxc(1).pdf",
+        "locator": "PDF p.1, YXC-10/14; wrapping normalized",
+        "sha256": "db0fbb74ec764a4c9f74db08d8b38da08e111671d5fab3f11c640c6765bca705"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "review_candidate: current entry wholly rewritten, not an isolated punctuation repair"
+    },
+    {
+      "id": "anna_named_challenges",
+      "text": "While these efforts advance AI in mental health, achieving more realistic seeker simulation remains hindered by two key challenges: dynamic evolution and multi-session memory.",
+      "source": {
+        "path": "local-skills/academic-exemplar-analysis/library/papers/acl-2025-annaagent/source.txt",
+        "locator": "L25-30 left column; checked against source.pdf p.1",
+        "sha256": "ca82fd77c9ebab177230af7022260dbf64d235d724e948f6cc8b4d2eef1ec866"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [
+        "en_bare_challenge_announcement"
+      ],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "non_trigger: names both challenges; following sentences explain fluctuations and emotion/memory solution"
+    },
+    {
+      "id": "acpo_background_contrast",
+      "text": "In contrast, Yang et al. [2025b] argue against amplifying the influence of low-probability tokens, showing that exclusively updating them leads to slow convergence and suboptimal performance.",
+      "source": {
+        "path": "local-skills/academic-exemplar-analysis/library/papers/arxiv-2026-acpo-rl-updates/source.txt",
+        "locator": "L186-189; wrapping normalized",
+        "sha256": "6153d9bd19e7e823ee41c6b8b4decd2be34e59de270220c9629405ecb3dec8b7"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [
+        "en_contrast_scope"
+      ],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": false,
+      "semantic_expectation": "non_trigger_D3: contrasts two other findings to establish a problem; preserve after scope review"
+    },
+    {
+      "id": "acpo_baseline_definition",
+      "text": "CISPO [Chen et al., 2025a], which clips only IS ratios rather than gating token updates;",
+      "source": {
+        "path": "local-skills/academic-exemplar-analysis/library/papers/arxiv-2026-acpo-rl-updates/source.txt",
+        "locator": "L491-492; wrapping normalized",
+        "sha256": "6153d9bd19e7e823ee41c6b8b4decd2be34e59de270220c9629405ecb3dec8b7"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [
+        "en_contrast_scope"
+      ],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": false,
+      "semantic_expectation": "non_trigger_D3: necessary distinction between clipping mechanisms in a baseline definition"
+    },
+    {
+      "id": "acpo_method_rationale",
+      "text": "For these reasons, we compare the dominant gradient subspaces rather than individual flattened vectors.",
+      "source": {
+        "path": "local-skills/academic-exemplar-analysis/library/papers/arxiv-2026-acpo-rl-updates/source.txt",
+        "locator": "L1229-1230; wrapping normalized",
+        "sha256": "6153d9bd19e7e823ee41c6b8b4decd2be34e59de270220c9629405ecb3dec8b7"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [
+        "en_contrast_scope"
+      ],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": false,
+      "semantic_expectation": "non_trigger_D3: mathematical comparison objects specified after actual rationale; no positioning against prior work"
+    },
+    {
+      "id": "acpo_progress_phrase",
+      "text": "Despite substantial progress, RLVR research remains largely heuristic-driven rather than systematic",
+      "source": {
+        "path": "local-skills/academic-exemplar-analysis/library/papers/arxiv-2026-acpo-rl-updates/source.txt",
+        "locator": "L50",
+        "sha256": "6153d9bd19e7e823ee41c6b8b4decd2be34e59de270220c9629405ecb3dec8b7"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [
+        "en_progress_transition",
+        "en_contrast_scope"
+      ],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": false,
+      "semantic_expectation": "review_candidate: idea mechanism can be learned without importing this surface phrasing"
+    },
+    {
+      "id": "avengers_participial_result",
+      "text": "embedLLM by 8.14%, and MODEL-SAT by 8.56%, showcasing its strong generalization capability.",
+      "source": {
+        "path": "local-skills/academic-exemplar-analysis/library/papers/aaai-2026-avengers/source.txt",
+        "locator": "L165",
+        "sha256": "37419bea9e69cf8afd9f0dc94f4ab9141e76495a41b1f2c13509b4c04d59b82c"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [
+        "en_lexical_trace",
+        "en_participial_tail"
+      ],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": false,
+      "semantic_expectation": "review_candidate: determine whether the tail supplies result meaning; exemplar occurrence is no proof of flaw"
+    },
+    {
+      "id": "genome_author_positioning",
+      "text": "By contrast, GENOME optimizes the population-level objective, namely the aggregated fitness of the top-k individuals in the final population, and applies GA-style operators directly in LoRA parameter space.",
+      "source": {
+        "path": "local-skills/academic-exemplar-analysis/library/papers/acl-2026-genome/source.txt",
+        "locator": "L197-201 right column; checked against source.pdf",
+        "sha256": "bc934b7ab1d32c85da2db52a6fe266b07b5035f0018d1d9a52d7cc92bb393a63"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [
+        "en_contrast_scope"
+      ],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": false,
+      "semantic_expectation": "author_decision_D3: source author positions GENOME against Model Swarms; target authors decide whether to adopt such positioning"
+    },
+    {
+      "id": "gaussian_a1_relation",
+      "text": "Because population type composition, contact selection, and experience-induced propensity changes correspond to the components, intensity reweighting, and translation of a Gaussian mixture, we represent response heterogeneity with a trainable Gaussian mixture.",
+      "source": {
+        "path": "oran-suite/oranai/oransim-dev/paper/targets/arxiv/gaussian-population-world-model/main.tex",
+        "locator": "L41; GAU-A01",
+        "sha256": "362388a1f3d43e5a6a61f3f12133835f4076a357935cdce660281425a4a5227d"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "reading_problem_A1: background premise versus modeling action; no automatic insertion of may or hypothesis"
+    },
+    {
+      "id": "gaussian_a5_goal",
+      "text": "We learn the response distribution and its feedback process under a common predictive objective:",
+      "source": {
+        "path": "oran-suite/oranai/oransim-dev/paper/targets/arxiv/gaussian-population-world-model/main.tex",
+        "locator": "L58; GAU-A05",
+        "sha256": "362388a1f3d43e5a6a61f3f12133835f4076a357935cdce660281425a4a5227d"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "reading_problem_A5: goal-to-method transition requires context; no automatic weakening of an implemented method"
+    },
+    {
+      "id": "gaussian_a6_mapping",
+      "text": "These population mechanisms correspond to operations on a Gaussian mixture.",
+      "source": {
+        "path": "oran-suite/oranai/oransim-dev/paper/targets/arxiv/gaussian-population-world-model/main.tex",
+        "locator": "L60; GAU-A06",
+        "sha256": "362388a1f3d43e5a6a61f3f12133835f4076a357935cdce660281425a4a5227d"
+      },
+      "source_type": "actual_manuscript",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "reading_problem_A6: explicate modeling relation using author material; no may-by-keyword replacement"
+    }
+  ]
+}

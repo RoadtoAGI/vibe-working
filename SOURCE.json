@@ -1,0 +1,31 @@
+{
+  "release": "1.0.0",
+  "packaged_on": "2026-10-10",
+  "visibility": "public",
+  "skills": [
+    {
+      "name": "rule-skill-authoring",
+      "source_name": "rule-skill-engineering",
+      "entry": "plugins/vibe-working/skills/rule-skill-authoring/SKILL.md"
+    },
+    {
+      "name": "engineering-value",
+      "source_name": "engineering-value",
+      "entry": "plugins/vibe-working/skills/engineering-value/SKILL.md"
+    },
+    {
+      "name": "aigc-writing-guard",
+      "source_name": "aigc-writing-guard",
+      "entry": "plugins/vibe-working/skills/aigc-writing-guard/SKILL.md"
+    },
+    {
+      "name": "quality-gate",
+      "source_name": "quality-gate",
+      "entry": "plugins/vibe-working/skills/quality-gate/SKILL.md"
+    }
+  ],
+  "adaptations": [
+    "Portable local references and historical-source locators",
+    "rule-skill-engineering published as rule-skill-authoring"
+  ]
+}

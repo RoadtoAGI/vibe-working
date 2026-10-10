@@ -1,0 +1,117 @@
+{
+  "purpose": "Sourced Chinese development regression. Texts are real sentences and headings from local documents; semantic expectations are documented judgments, not script output or held-out efficacy evidence.",
+  "cases": [
+    {
+      "id": "viz_before_literary_negation",
+      "text": "尚未处理完的课程数量\n尚未处理的原区间位置\n未取得回执，须重跑/查询\n返回 interrupted，本条消息未处理。\n已经进行的传播层数\nmap 记录 int 与输入序列，按需转换；numbers 尚未取值。",
+      "source": "viz/site 与 viz/scripts 2026-10-09 工作区改动（用户要求清理 AI 口癖，模型改、用户验收）",
+      "source_type": "actual_copy_before_edit",
+      "expected_surface_rules": [
+        "literary_negation"
+      ],
+      "semantic_expectation": "review_candidate: dense formal negation in UI copy; adopted edits replaced 尚未/未 with 还没/没有 (see references/zh-wording.md#书面腔与虚词)"
+    },
+    {
+      "id": "viz_after_plain_negation",
+      "text": "还没出队的课程数\n下一个待检查的原区间\n没有回执，要重跑或查询\n返回 interrupted，这条消息没有执行。\n已经传播的层数\nmap 只记下 int 和 parts，取值时才逐个转换；此刻还没有转换任何字段。",
+      "source": "viz/site 与 viz/scripts 2026-10-09 工作区改动（用户要求清理 AI 口癖，模型改、用户验收）",
+      "source_type": "actual_copy_after_edit",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [
+        "literary_negation",
+        "light_verb"
+      ],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "non_trigger: adopted plain register"
+    },
+    {
+      "id": "viz_kept_natural_negation",
+      "text": "1061109567 是尚未到达的哨兵值，不是票价",
+      "source": "viz/site 与 viz/scripts 2026-10-09 工作区改动（用户要求清理 AI 口癖，模型改、用户验收）",
+      "source_type": "actual_copy_after_edit",
+      "expected_surface_rules": [],
+      "semantic_expectation": "non_trigger: editor kept 尚未 where it reads naturally; single use never reaches the density floor"
+    },
+    {
+      "id": "title_rollcall_headings",
+      "text": "## FLOW-04 检查点：恢复点与外部副作用\n\n## PY-07 事件循环：协程、Task 与 Future\n\n## DIST-12 持久化与高可用：RDB、AOF、复制和分片\n\n## TRAIN-10 训练与验证：质量、成本与失败诊断",
+      "source": "study/tmp/2026-10-10-title-polish/handover.md 负例表与 rename_headings.py MAP",
+      "source_type": "actual_headings_before_edit",
+      "expected_surface_rules": [
+        "coordinated_heading"
+      ],
+      "semantic_expectation": "review_candidate: each heading lists items without the section's judgment; adopted titles in references/zh-wording.md#并列罗列罗列代替判断"
+    },
+    {
+      "id": "title_adopted_headings",
+      "text": "## FLOW-04 检查点：能续跑，不保证外部调用只发生一次\n\n## SYS-05 TCP：字节送达不等于业务提交\n\n## PY-07 事件循环：await 让出执行权，不会自动并发\n\n## DB-07 并发写入：把不变量交给数据库保证",
+      "source": "study/tmp/2026-10-10-title-polish/handover.md 负例表与 rename_headings.py MAP",
+      "source_type": "actual_headings_after_edit",
+      "expected_surface_rules": [],
+      "forbidden_surface_rules": [
+        "coordinated_heading"
+      ],
+      "expect_no_surface_hits": true,
+      "semantic_expectation": "non_trigger: headings state the section's judgment; the SYS-05 contrast is the section's thesis"
+    },
+    {
+      "id": "title_fixed_phrase_kept",
+      "text": "## 缓存故障：穿透、击穿与雪崩",
+      "source": "study/tmp/2026-10-10-title-polish/handover.md 负例表与 rename_headings.py MAP",
+      "source_type": "actual_heading_kept",
+      "expected_surface_rules": [
+        "coordinated_heading"
+      ],
+      "semantic_expectation": "non_trigger: industry fixed phrase; the surface hit is a candidate the reader dismisses"
+    },
+    {
+      "id": "lecture_audit_voice_single",
+      "text": "其工作区基线有产品规则，审查任务应显式核对提交或补丁位置。",
+      "source": "study/tmp/2026-09-26-agent-lecture-polish/baseline/05-orchestration 与现稿对照",
+      "source_type": "actual_lecture_before_edit",
+      "expected_surface_rules": [],
+      "semantic_expectation": "reading_problem: audit register hides who decides; a single sentence stays below the audit_voice floor, semantic review locates it"
+    },
+    {
+      "id": "lecture_quality_series",
+      "text": "目标清晰、成本可控、业务对接方便，常见于判别式系统。",
+      "source": "study/docs 知识草稿原句",
+      "source_type": "actual_lecture_observation",
+      "expected_surface_rules": [
+        "quality_adjective_series"
+      ],
+      "semantic_expectation": "review_candidate: three evaluations without an object"
+    },
+    {
+      "id": "lecture_anonymous_opponent",
+      "text": "很多人以为“模型调用函数”，好像模型真的执行了你的 Java 方法。",
+      "source": "study/docs 讲义原句",
+      "source_type": "actual_lecture_observation",
+      "expected_surface_rules": [
+        "anonymous_opponent"
+      ],
+      "semantic_expectation": "review_candidate: ask who holds this view; attribute or state the fact directly"
+    },
+    {
+      "id": "lecture_intuition_is_the_object",
+      "text": "直觉上，多出来的 36 层至少可以学成“什么都不做”，让 56 层网络至少不输给 20 层网络。",
+      "source": "study/docs ResNet 讲义原句",
+      "source_type": "actual_lecture_observation",
+      "expected_surface_rules": [
+        "surface_intuition_lead"
+      ],
+      "semantic_expectation": "non_trigger: the intuition is the hypothesis the cited experiment refutes"
+    },
+    {
+      "id": "lecture_focus_not_but",
+      "text": "这些模型真正值得学习的不是名字，而是它们在 token 来源和模态融合位置上的差别。",
+      "source": "study/docs 多模态讲义原句",
+      "source_type": "actual_lecture_observation",
+      "expected_surface_rules": [
+        "not_but",
+        "focus_not_but"
+      ],
+      "semantic_expectation": "review_candidate: nobody argues for learning names; the negative half is a foil"
+    }
+  ]
+}

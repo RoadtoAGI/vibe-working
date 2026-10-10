@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "phase": "draft",
+  "target": {
+    "name": "example-rule-skill",
+    "purpose": "Turn one source-backed decision into an executable rule.",
+    "deliverable": "A validated skill package.",
+    "owner": "example-rule-skill",
+    "consumers": ["Codex"]
+  },
+  "sources": [
+    {
+      "id": "S-001",
+      "kind": "user_requirement",
+      "locator": "Current task request",
+      "authority": "Defines the requested outcome and scope.",
+      "claims": ["The skill must produce an observable deliverable."]
+    }
+  ],
+  "rules": [
+    {
+      "id": "R-001",
+      "decision": "Whether the requested deliverable is complete.",
+      "trigger": "After the skill produces its target artifact.",
+      "action": "Inspect the artifact against the declared acceptance signal.",
+      "acceptance": "The artifact exists and satisfies its task-specific contract.",
+      "rationale": "A rule changes behavior only when its result can be checked.",
+      "authority": "Current task request",
+      "scope": "The example skill's final artifact.",
+      "owner": "example-rule-skill",
+      "strength": "execution_strategy",
+      "source_ids": ["S-001"],
+      "status": "active",
+      "replaced_by": null,
+      "depends_on": [],
+      "exceptions": []
+    }
+  ],
+  "clusters": [],
+  "placements": [
+    {
+      "rule_id": "R-001",
+      "surface": "skill_body",
+      "locator": "SKILL.md#validation",
+      "reason": "The executor needs the acceptance signal on every run."
+    }
+  ],
+  "checks": [
+    {
+      "name": "authority_traceability",
+      "status": "open",
+      "evidence": ["Replace this example with target-specific source evidence."]
+    },
+    {
+      "name": "rule_closure",
+      "status": "open",
+      "evidence": ["Replace this example with a target-specific closure review."]
+    },
+    {
+      "name": "merge_safety",
+      "status": "open",
+      "evidence": ["Record the equivalence comparison or why no merge candidates exist."]
+    },
+    {
+      "name": "abstraction_preservation",
+      "status": "open",
+      "evidence": ["Record the abstraction review or why abstraction is not applicable."]
+    },
+    {
+      "name": "ssot_uniqueness",
+      "status": "open",
+      "evidence": ["Record the duplicate-definition check."]
+    },
+    {
+      "name": "runtime_reachability",
+      "status": "open",
+      "evidence": ["Record how the direct consumer reaches the rule."]
+    },
+    {
+      "name": "structural_validation",
+      "status": "open",
+      "evidence": ["Record parser, link, script, and package validation results."]
+    },
+    {
+      "name": "behavior_positive",
+      "status": "open",
+      "evidence": ["Record a realistic positive behavior test."]
+    },
+    {
+      "name": "behavior_boundary",
+      "status": "open",
+      "evidence": ["Record a neighboring request that must not misroute."]
+    },
+    {
+      "name": "behavior_conflict",
+      "status": "open",
+      "evidence": ["Record a conflict, authorized override, state override, or degradation-path test."]
+    }
+  ]
+}

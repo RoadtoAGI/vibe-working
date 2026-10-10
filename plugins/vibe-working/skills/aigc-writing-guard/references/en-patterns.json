@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "language": "en",
+  "purpose": "English surface candidates for contextual review. Counts and fixed low priority are not semantic severity, authorship evidence, or edit instructions. Semantic judgment follows references/semantic-families.md and en-wording.md.",
+  "source_basis": {
+    "black": "Archived Black writing tutorial, L226-241: wording and navigation candidates; academic grammar belongs to academic-writing.",
+    "ptd": "B1/sources/paper-thesis-discipline-2026-09-22.md L24-49; adopted with the scopes in B1/legacy-rule-triage.md PTD-06,08,10,12-18.",
+    "muse": "MUSE YXC-10/14/31 and B1/accepted-repairs.md: punctuation signals require local reading; whole-entry rewrites do not isolate punctuation effects.",
+    "authority": "academic-writing Authority owns D3/D6/D7/D8; lint locates wording without resolving positioning, claims, or limitations.",
+    "humanizer": "Community lexicon blader/humanizer v3.1.0 (repos/reference/AIGC-prevent/humanizer/SKILL.md) §1/§5/§12/§13/§18: phrase lists adopted as locators only; its examples are not reproduced.",
+    "hc3": "HC3 indicating_words_en_chatgpt.txt: list-announcement openers from QA data; assistant register, not article prose evidence."
+  },
+  "families": {
+    "lexical_trace": {
+      "description": "Frequently reported wording; inspect its local object and function.",
+      "rules": [
+        {
+          "id": "en_lexical_trace",
+          "pattern": "(?i)\\b(?:delv(?:e|es|ed|ing)|showcas(?:e|es|ed|ing)|leverag(?:e|es|ed|ing)|underscor(?:e|es|ed|ing)|pivotal|seamless(?:ly)?)\\b",
+          "severity": "low",
+          "message": "核对是否表达具体动作或性质；词语本身不构成错误，保留准确的技术用法和作者力度。"
+        }
+      ]
+    },
+    "semantic_restatement": {
+      "description": "Possible repeated benefit statements; the preceding and following sentences decide redundancy.",
+      "rules": [
+        {
+          "id": "en_participial_tail",
+          "pattern": "(?i),\\s+(?:validating|demonstrating|highlighting|showcasing|underscoring)\\b",
+          "severity": "low",
+          "message": "复读分词尾句及上下文；只在其重复已知评价且没有结果含义或承接作用时精简。"
+        },
+        {
+          "id": "en_benefit_restatement",
+          "pattern": "(?i)\\bthis\\s+(?:design|approach|framework|method)\\s+(?:enables|provides|allows)\\b",
+          "severity": "low",
+          "message": "检查是否新增能力、推论或后文所需承接；确认无阅读增量后才删，不预设方法之后不能解释好处。"
+        }
+      ]
+    },
+    "meta_performance": {
+      "description": "Transition and navigation wording; retain its actual explanatory or navigational function.",
+      "rules": [
+        {
+          "id": "en_progress_transition",
+          "pattern": "(?i)\\bdespite\\s+(?:(?:substantial|recent|significant)\\s+)?progress\\b",
+          "severity": "low",
+          "message": "检查后文是否直接交代具体难点及其关系；依据已有材料修订空宣告，保留有效让步。"
+        },
+        {
+          "id": "en_bare_challenge_announcement",
+          "pattern": "(?i)\\b(?:addresses?\\s+(?:two|three|[0-9]+)\\s+(?:(?:core|key|critical)\\s+)?challenges|(?:yet\\s+)?a\\s+(?:critical|key)\\s+challenge\\s+remains)(?=\\s*[.!?](?:\\s|$))",
+          "severity": "low",
+          "message": "此处只检测句末裸宣告；连同随后内容检查是否已解释具体挑战及解法。具体命名、公式或清单引出的挑战不由此规则命中。"
+        },
+        {
+          "id": "en_need_announcement",
+          "pattern": "(?i)\\bhighlights?\\s+the\\s+need\\s+for\\b",
+          "severity": "low",
+          "message": "检查是否代替了具体需求，或确实承接已说明的原因；没有材料时不补造难点。"
+        },
+        {
+          "id": "en_section_metadiscourse",
+          "pattern": "(?i)\\b(?:in\\s+this\\s+section\\s+we|the\\s+remainder\\s+of\\s+this\\s+paper\\s+is\\s+organized\\s+as\\s+follows)\\b",
+          "severity": "low",
+          "message": "按体裁和阅读依赖判断导航作用；复杂推导的目标与去向可保留，不按句式自动删除。"
+        },
+        {
+          "id": "en_contribution_colon",
+          "pattern": "(?i)\\bour\\s+(?:key\\s+)?contributions(?:\\s+are(?:\\s+as\\s+follows)?)?\\s*:",
+          "severity": "low",
+          "message": "检查贡献起句与内容层级；此模式只定位起句，不禁止定义、公式或列表中的冒号，也不限定贡献条数。"
+        }
+      ]
+    },
+    "abstract_evaluation": {
+      "description": "Generic assessments and causal templates whose referents require reading.",
+      "rules": [
+        {
+          "id": "en_generic_evaluation",
+          "pattern": "(?i)\\b(?:groundbreaking|cutting[- ]edge|paramount|fundamental\\s+tension|rich\\s+world\\s+knowledge|comprehensive|unique|novel|nuanced|holistic|meaningful\\s+(?:margin|improvement|gain|difference)|crucial|robust(?!\\s+(?:statistic|estimat|regression|standard\\s+error))|transformative|testament\\s+to|stands?\\s+as\\s+a\\s+testament)\\b(?!-)",
+          "severity": "low",
+          "message": "问：相对什么？技术定义（robust statistics、gated units）、有对照的 novel、有检验的 significant 保留；没有标准的评价词换成它所指的属性或数字，删后不得留下更泛的命题。"
+        },
+        {
+          "id": "en_causal_template",
+          "pattern": "(?i)\\b(?:can\\s+be\\s+attributed\\s+to|this\\s+discrepancy\\s+suggests\\s+that)\\b",
+          "severity": "low",
+          "message": "核对归因是否来自作者材料；不能换成This likely stems from后继续猜因。学术结果解释缺材料时按academic-writing作者规则交接。"
+        },
+        {
+          "id": "en_inflated_significance",
+          "pattern": "(?i)\\b(?:a\\s+(?:pivotal|crucial|defining)\\s+moment|plays?\\s+a\\s+(?:key|crucial|pivotal|vital)\\s+role|underscores?\\s+(?:its|the)\\s+importance|reflects?\\s+a\\s+broader|(?:enduring|lasting)\\s+legacy|setting\\s+the\\s+stage\\s+for|(?:ever-)?evolving\\s+landscape|indelible\\s+mark|paving\\s+the\\s+way|the\\s+future\\s+looks\\s+bright)\\b",
+          "severity": "low",
+          "message": "意义拔高：保留事实，删去对意义的宣告；段落以最后一个具体事实结束。"
+        }
+      ]
+    },
+    "positioning_language": {
+      "description": "Surface contrast spans. Only contextual review under academic-writing Authority can determine whether D3 applies.",
+      "rules": [
+        {
+          "id": "en_contrast_scope",
+          "pattern": "(?i)\\b(?:in\\s+contrast(?:\\s+to)?|by\\s+contrast|unlike|rather\\s+than|differs?\\s+(?:(?:significantly|substantially)\\s+)?from|as\\s+opposed\\s+to|we\\s+are\\s+not)\\b",
+          "severity": "low",
+          "decision_owner": "academic-writing/Authority",
+          "message": "先识别比较双方和段落职责。本文相对既有工作的定位交作者决定；背景中并列他人发现、方法定义所需对照可保留。此命中不授权自动改写、删除或降级结论。"
+        }
+      ]
+    },
+    "contrastive_scaffold": {
+      "description": "Negated foil before the claim; keep when the negative half corrects a belief the reader actually holds or both halves carry information.",
+      "rules": [
+        {
+          "id": "en_not_but",
+          "pattern": "(?i)\\b(?:it(?:'s| is| was)\\s+not\\s+(?:just|only|merely|simply|about)|not\\s+(?:just|only|merely|simply)\\s+(?:a|an|the|about)\\b|is\\s+not\\s+about|isn't\\s+about|this\\s+(?:does\\s+not|doesn't)\\s+mean|the\\s+(?:real|key|deeper)\\s+(?:question|issue|point|problem)\\s+is)\\b",
+          "severity": "low",
+          "message": "问：被否定的一半有人持有吗？删掉它后半句是否受损？不受损就直接陈述；不倒装成 rather than 充数，不改变作者确定度。"
+        }
+      ]
+    },
+    "strawman_opening": {
+      "description": "An opponent nobody in the text holds, or a denial of an objection nobody raised.",
+      "rules": [
+        {
+          "id": "en_anonymous_opponent",
+          "pattern": "(?i)\\b(?:many\\s+(?:people\\s+)?(?:believe|assume|think)|conventional\\s+wisdom|it\\s+(?:is|'s)\\s+tempting\\s+to|one\\s+might\\s+(?:think|assume|expect|be\\s+tempted)|a\\s+common\\s+(?:assumption|misconception)|some\\s+might\\s+(?:say|argue)|you\\s+might\\s+think|a\\s+tempting\\s+approach|an\\s+obvious\\s+approach\\s+would\\s+be|it\\s+would\\s+be\\s+easy\\s+to\\s+just|experts\\s+argue|observers\\s+have\\s+cited)\\b",
+          "severity": "low",
+          "message": "问：这个对手是谁？有归属的反对意见和读者真会权衡的选项保留并写全；找不到对手就删去引子，直接写判断。"
+        },
+        {
+          "id": "en_preemptive_denial",
+          "pattern": "(?i)\\b(?:to\\s+be\\s+clear|don't\\s+get\\s+me\\s+wrong|this\\s+is\\s+not\\s+to\\s+say|i'm\\s+not\\s+(?:saying|arguing)|this\\s+isn't\\s+(?:mainly\\s+)?about)\\b",
+          "severity": "low",
+          "message": "核对文中是否真有人提出这个反对；没有就删去，保留随后的事实。连续几条无关的否认比一条更可疑。"
+        }
+      ]
+    },
+    "stiff_register": {
+      "description": "Verbs that detour around is/has, list-announcement openers and nominalised frames; single uses are ordinary.",
+      "rules": [
+        {
+          "id": "en_detour_verb",
+          "pattern": "(?i)\\b(?:serves?\\s+as|stands?\\s+as|functions?\\s+as|operates?\\s+as|boasts?|utiliz(?:e|es|ed|ing)|facilitat(?:e|es|ed|ing)|in\\s+order\\s+to)\\b",
+          "severity": "low",
+          "min_document_hits": 3,
+          "message": "成片绕开 is / has / use / help 时按段落恢复直接动词；单独出现不是问题，专名与引文不动。"
+        },
+        {
+          "id": "en_list_announcement",
+          "pattern": "(?im)^\\s*(?:there\\s+are\\s+(?:several|a\\s+few|many|a\\s+number\\s+of)\\s+(?:ways|options|factors|strategies|steps|things)|here\\s+are\\s+(?:a\\s+few|some|the)\\s+(?:tips|steps|things|ways)|it\\s+is\\s+generally\\s+a\\s+good\\s+idea)\\b",
+          "severity": "low",
+          "message": "问答助手式开场进入正文即铺垫：删去后直接写第一条内容。"
+        }
+      ]
+    },
+    "hollow_coordination": {
+      "description": "Headings and abstract pairs that list items without stating the relation; two topics with their own content, fixed phrases and navigation headings keep.",
+      "rules": [
+        {
+          "id": "en_coordinated_heading",
+          "pattern": "(?im)^\\s*#{1,6}\\s+[^\\n]*\\b[A-Za-z][^\\n]*\\b(?:and|&)\\b\\s+[A-Za-z][^\\n]*$",
+          "severity": "low",
+          "message": "标题只摆项目还是说出了判断？正文已建立关系或结论的写出来；并列项即内容、固定节名、导航标题保留。"
+        },
+        {
+          "id": "en_abstract_pair",
+          "pattern": "(?i)\\b(?:challenges\\s+and\\s+opportunities|opportunities\\s+and\\s+challenges|breadth\\s+and\\s+depth|depth\\s+and\\s+breadth|efficiency\\s+and\\s+effectiveness|quality\\s+and\\s+efficiency|scalability\\s+and\\s+flexibility|innovation\\s+and\\s+growth)\\b",
+          "severity": "low",
+          "message": "任何对象都有的抽象两面：补上本处对象，或写出本处真正比较的东西。"
+        }
+      ]
+    }
+  },
+  "derived_signals": {
+    "distribution_only": true,
+    "metrics": [
+      "prose_colons",
+      "em_dashes",
+      "participial_tails",
+      "lexical_trace_tokens"
+    ],
+    "normalization": "per_1000_english_words",
+    "interpretation": "Counts only rank passages for rereading; no numerical threshold or semantic severity follows from the distribution."
+  }
+}

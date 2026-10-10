@@ -1,0 +1,30 @@
+{
+  "name": "vibe-working",
+  "version": "1.0.0",
+  "description": "AI 工作技能：规则与技能开发、工程取舍、中英文表达治理、交付质量闸门。",
+  "author": {
+    "name": "RoadtoAGI"
+  },
+  "homepage": "https://github.com/RoadtoAGI/vibe-working",
+  "repository": "https://github.com/RoadtoAGI/vibe-working",
+  "license": "MIT",
+  "keywords": [
+    "rule-skill-authoring",
+    "engineering-value",
+    "aigc-writing-guard",
+    "quality-gate"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Vibe Working",
+    "shortDescription": "AI 工作技能：规则与技能开发、工程取舍、中英文表达治理、交付质量闸门。",
+    "developerName": "RoadtoAGI",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/RoadtoAGI/vibe-working"
+  }
+}

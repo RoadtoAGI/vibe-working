@@ -1,0 +1,483 @@
+{
+ "kind": "synthetic_deterministic_compatibility_tests_not_few_shots; regenerated 2026-10-10 after lexicon extension (new families: strawman_opening, hollow_coordination, empty_modifier, stiff_register; extended contrastive_negation and code_document_register_leakage)",
+ "baseline_script_sha256": "4562a591b914d7408f7c4d8e2c83f9def194d6e9a4cbbda9ef925e77f0051aa4",
+ "cases": [
+  {
+   "text": "诚实说：数据不足。\n\n短答：不建议上线。\n\n## 先给结论\n\n讲人话：先修复输入口径。",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 43,
+     "lines": 7,
+     "paragraphs": 3
+    },
+    "hits": [
+     {
+      "family": "performative_preface",
+      "review_only": true,
+      "rule_id": "honesty_preface",
+      "severity": "high",
+      "line": 1,
+      "column": 1,
+      "matched": "诚实说",
+      "source": "诚实说：数据不足。",
+      "message": "核对是否只是诚实性自我标注；确认无内容功能后删除，引文按实际用途保留。"
+     },
+     {
+      "family": "performative_preface",
+      "review_only": true,
+      "rule_id": "brevity_preface",
+      "severity": "high",
+      "line": 3,
+      "column": 1,
+      "matched": "短答",
+      "source": "短答：不建议上线。",
+      "message": "核对是否只是篇幅自我标注；确认无导航功能后删除，保留理解所需内容。"
+     },
+     {
+      "family": "performative_preface",
+      "review_only": true,
+      "rule_id": "conclusion_first_preface",
+      "severity": "high",
+      "line": 5,
+      "column": 1,
+      "matched": "## 先给结论",
+      "source": "## 先给结论",
+      "message": "核对是否只是顺序表演；确认无导航功能后从结论开始。"
+     },
+     {
+      "family": "performative_preface",
+      "review_only": true,
+      "rule_id": "plain_speech_preface",
+      "severity": "high",
+      "line": 7,
+      "column": 1,
+      "matched": "讲人话",
+      "source": "讲人话：先修复输入口径。",
+      "message": "核对是否只是语言属性标签；有效的通俗重述和解释承接保留，无功能标签删除。"
+     }
+    ],
+    "clusters": [
+     {
+      "family": "performative_preface",
+      "count": 4,
+      "severity": "high",
+      "lines": [
+       1,
+       3,
+       5,
+       7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "text": "值得注意的是，这不是简单的效率问题，而是组织责任问题。\n\n首先，平台提供入口。其次，平台整合数据。最后，平台形成闭环。",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 59,
+     "lines": 3,
+     "paragraphs": 2
+    },
+    "hits": [
+     {
+      "family": "meta_performance",
+      "review_only": true,
+      "rule_id": "meta_notice",
+      "severity": "medium",
+      "line": 1,
+      "column": 1,
+      "matched": "值得注意的是",
+      "source": "值得注意的是，这不是简单的效率问题，而是组织责任问题。",
+      "message": "检查提醒是否承担强调区别或承接的作用；删除无用框架后重组必要关系。"
+     },
+     {
+      "family": "contrastive_negation",
+      "review_only": true,
+      "rule_id": "not_but",
+      "severity": "medium",
+      "line": 1,
+      "column": 9,
+      "matched": "不是简单的效率问题，而是",
+      "source": "值得注意的是，这不是简单的效率问题，而是组织责任问题。",
+      "message": "检查是否只是迂回宣告；需要修订时直接陈述已有命题，并保留比较对象和成立条件。"
+     },
+     {
+      "family": "formulaic_enumeration",
+      "review_only": true,
+      "rule_id": "ordinal_transition",
+      "severity": "low",
+      "line": 3,
+      "column": 1,
+      "matched": "首先，",
+      "source": "首先，平台提供入口。其次，平台整合数据。最后，平台形成闭环。",
+      "message": "检查条目数量是否来自真实论点，而非固定模板。"
+     },
+     {
+      "family": "formulaic_enumeration",
+      "review_only": true,
+      "rule_id": "ordinal_transition",
+      "severity": "low",
+      "line": 3,
+      "column": 11,
+      "matched": "其次，",
+      "source": "首先，平台提供入口。其次，平台整合数据。最后，平台形成闭环。",
+      "message": "检查条目数量是否来自真实论点，而非固定模板。"
+     },
+     {
+      "family": "formulaic_enumeration",
+      "review_only": true,
+      "rule_id": "ordinal_transition",
+      "severity": "low",
+      "line": 3,
+      "column": 21,
+      "matched": "最后，",
+      "source": "首先，平台提供入口。其次，平台整合数据。最后，平台形成闭环。",
+      "message": "检查条目数量是否来自真实论点，而非固定模板。"
+     }
+    ],
+    "clusters": [
+     {
+      "family": "contrastive_negation",
+      "count": 1,
+      "severity": "medium",
+      "lines": [
+       1
+      ]
+     },
+     {
+      "family": "formulaic_enumeration",
+      "count": 3,
+      "severity": "low",
+      "lines": [
+       3
+      ]
+     },
+     {
+      "family": "meta_performance",
+      "count": 1,
+      "severity": "medium",
+      "lines": [
+       1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "text": "这项技术将成为增长引擎，为行业注入新动能。\n\n我调用了你要求的“准确性硬刹车/盲区审计”。\n\n这里只保留两个选择。除非出现真正的新证据，否则没有第三条方案；中途没有兜底。",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 85,
+     "lines": 5,
+     "paragraphs": 3
+    },
+    "hits": [
+     {
+      "family": "stock_metaphor",
+      "review_only": true,
+      "rule_id": "engine_metaphor",
+      "severity": "low",
+      "line": 1,
+      "column": 8,
+      "matched": "增长引擎",
+      "source": "这项技术将成为增长引擎，为行业注入新动能。",
+      "message": "检查引擎隐喻能否对应实际驱动机制。"
+     },
+     {
+      "family": "stock_metaphor",
+      "review_only": true,
+      "rule_id": "inject_momentum",
+      "severity": "low",
+      "line": 1,
+      "column": 16,
+      "matched": "注入新动能",
+      "source": "这项技术将成为增长引擎，为行业注入新动能。",
+      "message": "检查比喻能否准确指向资源和作用关系；失配时按已有材料直述。"
+     },
+     {
+      "family": "meta_performance",
+      "review_only": true,
+      "rule_id": "assistant_leak",
+      "severity": "high",
+      "line": 3,
+      "column": 1,
+      "matched": "我调用了你要求的",
+      "source": "我调用了你要求的“准确性硬刹车/盲区审计”。",
+      "message": "核对是否为成稿中的助手执行话语；正文导航、引文和用户要求的操作说明按实际功能判断。"
+     },
+     {
+      "family": "code_document_register_leakage",
+      "review_only": true,
+      "rule_id": "pseudo_control_label",
+      "severity": "low",
+      "line": 3,
+      "column": 10,
+      "matched": "准确性硬刹车",
+      "source": "我调用了你要求的“准确性硬刹车/盲区审计”。",
+      "message": "检查是否存在字面控制机制或正式条件；确认语域失配后按本领域对象和条件修订。"
+     },
+     {
+      "family": "code_document_register_leakage",
+      "review_only": true,
+      "rule_id": "pseudo_audit_label",
+      "severity": "low",
+      "line": 3,
+      "column": 17,
+      "matched": "盲区审计",
+      "source": "我调用了你要求的“准确性硬刹车/盲区审计”。",
+      "message": "核对是否为正式核查或自设名目；确认失配后表达已有核查对象和遗漏。"
+     },
+     {
+      "family": "code_document_register_leakage",
+      "review_only": true,
+      "rule_id": "branch_foreclosure",
+      "severity": "medium",
+      "line": 5,
+      "column": 3,
+      "matched": "只保留两个选择",
+      "source": "这里只保留两个选择。除非出现真正的新证据，否则没有第三条方案；中途没有兜底。",
+      "message": "检查模型是否自行封闭选项；改写为当前可行方案及各自成立条件。"
+     },
+     {
+      "family": "code_document_register_leakage",
+      "review_only": true,
+      "rule_id": "evidence_gate",
+      "severity": "low",
+      "line": 5,
+      "column": 11,
+      "matched": "除非出现真正的新证据",
+      "source": "这里只保留两个选择。除非出现真正的新证据，否则没有第三条方案；中途没有兜底。",
+      "message": "检查新信息及重新评估条件是否清楚；保留已有严格条件，修复空泛程序名目。"
+     },
+     {
+      "family": "code_document_register_leakage",
+      "review_only": true,
+      "rule_id": "branch_foreclosure",
+      "severity": "medium",
+      "line": 5,
+      "column": 24,
+      "matched": "没有第三条方案",
+      "source": "这里只保留两个选择。除非出现真正的新证据，否则没有第三条方案；中途没有兜底。",
+      "message": "检查模型是否自行封闭选项；改写为当前可行方案及各自成立条件。"
+     },
+     {
+      "family": "code_document_register_leakage",
+      "review_only": true,
+      "rule_id": "fallback_register",
+      "severity": "low",
+      "line": 5,
+      "column": 24,
+      "matched": "没有第三条方案；中途没有兜底",
+      "source": "这里只保留两个选择。除非出现真正的新证据，否则没有第三条方案；中途没有兜底。",
+      "message": "核对是否为字面备用机制；确认语域失配后从材料写明备用资源和安排。"
+     }
+    ],
+    "clusters": [
+     {
+      "family": "code_document_register_leakage",
+      "count": 6,
+      "severity": "medium",
+      "lines": [
+       3,
+       5
+      ]
+     },
+     {
+      "family": "meta_performance",
+      "count": 1,
+      "severity": "high",
+      "lines": [
+       3
+      ]
+     },
+     {
+      "family": "stock_metaphor",
+      "count": 2,
+      "severity": "low",
+      "lines": [
+       1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "text": "李等（2024）研究表明，该方法在表3所列条件下将准确率从71.2%提高到75.8%。",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 43,
+     "lines": 1,
+     "paragraphs": 1
+    },
+    "hits": [],
+    "clusters": []
+   }
+  },
+  {
+   "text": "表3给出两组结果。准确率从71.2%提高到75.8%，误差范围保持不变。",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 36,
+     "lines": 1,
+     "paragraphs": 1
+    },
+    "hits": [],
+    "clusters": []
+   }
+  },
+  {
+   "text": "本文将“先给结论”和“讲人话”列为待分析的表演式前缀。",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 27,
+     "lines": 1,
+     "paragraphs": 1
+    },
+    "hits": [],
+    "clusters": []
+   }
+  },
+  {
+   "text": "具体而言，第一组只读取记录。具体而言，第二组还可以更新记录。",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 30,
+     "lines": 1,
+     "paragraphs": 1
+    },
+    "hits": [
+     {
+      "family": "filler_connector",
+      "review_only": true,
+      "rule_id": "generic_connector",
+      "severity": "low",
+      "line": 1,
+      "column": 1,
+      "matched": "具体而言",
+      "source": "具体而言，第一组只读取记录。具体而言，第二组还可以更新记录。",
+      "message": "核对连接词是否标记了真实的逻辑变化。"
+     },
+     {
+      "family": "filler_connector",
+      "review_only": true,
+      "rule_id": "generic_connector",
+      "severity": "low",
+      "line": 1,
+      "column": 15,
+      "matched": "具体而言",
+      "source": "具体而言，第一组只读取记录。具体而言，第二组还可以更新记录。",
+      "message": "核对连接词是否标记了真实的逻辑变化。"
+     }
+    ],
+    "clusters": [
+     {
+      "family": "filler_connector",
+      "count": 2,
+      "severity": "low",
+      "lines": [
+       1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "text": "```python\n诚实说：这不是文本，而是代码对象。\n```\n\n当前状态与应用范围",
+   "report": {
+    "schema_version": 1,
+    "claim": "observable_style_risk_signals_only",
+    "review_guidance": "结合上下文判断候选的阅读功能；保留必要回指、衔接、比较和自然搭配。命中数与严重度不构成自动改写或质量结论。",
+    "coverage": {
+     "surface_lint": "completed",
+     "semantic_review": "not_run",
+     "overall_review": "incomplete"
+    },
+    "document": {
+     "characters": 42,
+     "lines": 5,
+     "paragraphs": 1
+    },
+    "hits": [
+     {
+      "family": "code_document_register_leakage",
+      "review_only": true,
+      "rule_id": "status_usage_scope_heading",
+      "severity": "low",
+      "line": 5,
+      "column": 1,
+      "matched": "当前状态与应用范围",
+      "source": "当前状态与应用范围",
+      "message": "非代码文本中的标题候选：检查是否把事实、现状或注意事项包装成系统状态与接口使用范围。"
+     }
+    ],
+    "clusters": [
+     {
+      "family": "code_document_register_leakage",
+      "count": 1,
+      "severity": "low",
+      "lines": [
+       5
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

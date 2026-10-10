@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIGC Writing Guard"
+  short_description: "治理非创意中英文文本的 AI 口癖：空词虚词、生硬罗列、否定转折与虚设对手、表演式宣告、模板与跨域语域"
+  default_prompt: "使用 $aigc-writing-guard，按当前任务预防、审阅或修订 AI 口癖；按文本语言加载对应判据，保留信息与确定度，以阅读功能和语感判断。"
